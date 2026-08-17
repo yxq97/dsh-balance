@@ -14,8 +14,7 @@
 ## 预览
 
 **菜单栏实时余额**（常驻屏幕顶部，点击弹出菜单）：
-
-![菜单栏余额](assets/menu-bar.png)
+<img width="100" height="34" alt="image" src="https://github.com/user-attachments/assets/4e0c7f66-2f3f-40e4-8e73-bc6de47a9de2" />
 
 **消耗图表窗口**（纵坐标 = 百万 token，可切换 15分钟 / 每天 / 每周 / 每月）：
 
