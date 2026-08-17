@@ -6,7 +6,11 @@ Pure native Swift / AppKit. **Zero third-party dependencies** — fully auditabl
 
 ## Preview
 
-Consumption chart window (Y-axis in million tokens; switch between 15-min / daily / weekly / monthly):
+**Real-time balance in the menu bar** (persistent at the top of your screen, click for the menu):
+
+![Menu bar balance](assets/menu-bar.png)
+
+**Consumption chart window** (Y-axis in million tokens; switch between 15-min / daily / weekly / monthly):
 
 | Daily (last 14 days) | 15-min (last hour) |
 | --- | --- |
