@@ -14,7 +14,7 @@ Pure native Swift / AppKit. **Zero third-party dependencies** — fully auditabl
 
 **Real-time balance in the menu bar** (persistent at the top of your screen, click for the menu):
 
-![Menu bar balance](assets/menu-bar.png)
+<img width="100" height="34" alt="menu bar balance" src="https://github.com/user-attachments/assets/4e0c7f66-2f3f-40e4-8e73-bc6de47a9de2" />
 
 **Consumption chart window** (Y-axis in million tokens; switch between 15-min / daily / weekly / monthly):
 
