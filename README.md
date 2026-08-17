@@ -1,5 +1,12 @@
 # DSH Balance — DeepSeek 余额监控 & 消耗图表（macOS 菜单栏）
 
+> **English**: [README.en.md](README.en.md)
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-macOS%20(Apple%20Silicon)-brightgreen.svg)]()
+[![Language](https://img.shields.io/badge/Swift-5-important.svg)]()
+[![Stars](https://img.shields.io/github/stars/yxq97/dsh-balance?style=social)](https://github.com/yxq97/dsh-balance)
+
 一个轻量的 macOS 菜单栏应用：常驻屏幕顶部显示 DeepSeek（或其他兼容提供方）的实时余额，支持消耗折线图、API Key 管理、充值跳转、刷新间隔自定义。
 
 纯原生 Swift / AppKit 实现，**零第三方依赖**，源码可编译、可审计。
