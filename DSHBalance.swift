@@ -677,6 +677,52 @@ func runCheckChart() -> Never {
     exit(0)
 }
 
+/// --render-chart <路径>：离屏渲染图表面板为 PNG（用于 README 截图，无需屏幕录制权限）
+func runRenderChart(path: String) -> Never {
+    let cfg = loadConfig()
+    let sk: String
+    if cfg.provider == "custom" {
+        sk = "custom|\(cfg.baseURL ?? "")"
+    } else {
+        sk = "deepseek|https://api.deepseek.com"
+    }
+    let ctrl = ChartPanelController()
+    ctrl.history = loadHistory(sourceKey: sk)
+    ctrl.costPerMillionTokens = cfg.costPerMillionTokens
+    ctrl.seg.selectedSegment = 1 // 每天档（曲线最直观）
+    ctrl.refreshChart()
+
+    guard let view = ctrl.panel.contentView else {
+        print("ERROR: 无 contentView")
+        exit(1)
+    }
+    let scale: CGFloat = 2
+    let w = Int(view.bounds.width * scale)
+    let h = Int(view.bounds.height * scale)
+    guard let rep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: w, pixelsHigh: h,
+                                     bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true,
+                                     isPlanar: false, colorSpaceName: .deviceRGB,
+                                     bytesPerRow: 0, bitsPerPixel: 0) else {
+        print("ERROR: 无法创建位图")
+        exit(1)
+    }
+    rep.size = view.bounds.size
+    let ctx = NSGraphicsContext(bitmapImageRep: rep)
+    NSGraphicsContext.saveGraphicsState()
+    NSGraphicsContext.current = ctx
+    view.displayIgnoringOpacity(view.bounds, in: ctx!)
+    ctx?.flushGraphics()
+    NSGraphicsContext.restoreGraphicsState()
+
+    if let png = rep.representation(using: .png, properties: [:]) {
+        try? png.write(to: URL(fileURLWithPath: path))
+        print("已渲染图表:", path, "\(w)x\(h)")
+    } else {
+        print("ERROR: PNG 编码失败")
+    }
+    exit(0)
+}
+
 // ===================== 应用主体 =====================
 
 final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
@@ -690,6 +736,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     private var isFetching = false
     private var chartController: ChartPanelController?
     private weak var configAccessory: NSView?
+    /// --show-chart 模式下启动后自动弹出图表窗口
+    var autoShowChart = false
 
     private let tagBaseURLField = 101
     private let tagStylePop = 102
@@ -761,6 +809,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
         refresh()
         startTimer()
+
+        if autoShowChart {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+                self?.showChart()
+            }
+        }
     }
 
     func startTimer() {
@@ -1107,8 +1161,15 @@ struct DSHBalanceMain {
         if CommandLine.arguments.contains("--check-chart") {
             runCheckChart()
         }
+        if let idx = CommandLine.arguments.firstIndex(of: "--render-chart"),
+           idx + 1 < CommandLine.arguments.count {
+            runRenderChart(path: CommandLine.arguments[idx + 1])
+        }
         let app = NSApplication.shared
         let delegate = AppDelegate()
+        if CommandLine.arguments.contains("--show-chart") {
+            delegate.autoShowChart = true
+        }
         app.delegate = delegate
         app.run()
     }

@@ -4,6 +4,14 @@ A lightweight macOS menu bar app that shows your real-time DeepSeek (or other co
 
 Pure native Swift / AppKit. **Zero third-party dependencies** — fully auditable source code.
 
+## Preview
+
+Consumption chart window (Y-axis in million tokens; switch between 15-min / daily / weekly / monthly):
+
+| Daily (last 14 days) | 15-min (last hour) |
+| --- | --- |
+| ![Daily consumption](assets/chart-daily.png) | ![15-min consumption](assets/chart-15min.png) |
+
 ## Features
 
 - **Real-time balance in the menu bar**: refreshes every 60s by default (configurable: 5/10/30/60s), updates instantly on change
