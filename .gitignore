@@ -1,0 +1,12 @@
+# 构建产物
+DSHBalance
+DSH Balance.app/
+*.app
+
+# 系统文件
+.DS_Store
+
+# 本地配置与历史（含敏感数据，绝不入库）
+config.json
+history.jsonl
+*.log
