@@ -4,6 +4,12 @@ A lightweight macOS menu bar app that shows your real-time DeepSeek (or other co
 
 Pure native Swift / AppKit. **Zero third-party dependencies** — fully auditable source code.
 
+## 🚀 Quick Download (no build required)
+
+[**Download the latest dsh-balance.dmg**](https://github.com/yxq97/dsh-balance/releases/latest) → open the DMG and drag **DSH Balance** into Applications.
+
+> ⚠️ First launch: the app is ad-hoc signed (not notarized), so macOS may warn "cannot verify the developer". **Right-click the app → Open → click "Open"** (only once).
+
 ## Preview
 
 **Real-time balance in the menu bar** (persistent at the top of your screen, click for the menu):

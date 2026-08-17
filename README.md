@@ -5,11 +5,18 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-macOS%20(Apple%20Silicon)-brightgreen.svg)]()
 [![Language](https://img.shields.io/badge/Swift-5-important.svg)]()
+[![Release](https://img.shields.io/github/v/release/yxq97/dsh-balance)](https://github.com/yxq97/dsh-balance/releases)
 [![Stars](https://img.shields.io/github/stars/yxq97/dsh-balance?style=social)](https://github.com/yxq97/dsh-balance)
 
 一个轻量的 macOS 菜单栏应用：常驻屏幕顶部显示 DeepSeek（或其他兼容提供方）的实时余额，支持消耗折线图、API Key 管理、充值跳转、刷新间隔自定义。
 
 纯原生 Swift / AppKit 实现，**零第三方依赖**，源码可编译、可审计。
+
+## 🚀 快速下载（无需编译）
+
+[**下载最新版 dsh-balance.dmg**](https://github.com/yxq97/dsh-balance/releases/latest) → 打开 DMG，把 **DSH Balance** 拖入 Applications。
+
+> ⚠️ 首次打开：因应用为本地 ad-hoc 签名（未付费公证），macOS 会提示"无法验证开发者"。请**右键点 App → 打开 → 再点"打开"**（只需一次）。
 
 ## 预览
 
